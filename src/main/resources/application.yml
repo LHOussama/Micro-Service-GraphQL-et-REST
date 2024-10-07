@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: BanqueDigital
+  datasource:
+    url: jdbc:h2:mem:banquedigital
+  h2:
+    console:
+      enabled: true
+server:
+  port: 8080

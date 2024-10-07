@@ -1,0 +1,37 @@
+type Compte {
+    id: ID!
+    solde: Float!
+    date_creation: String!
+    type: String!
+    client: Client!
+}
+type Client {
+    id: ID!
+    nom: String!
+    comptes: [Compte!]! @deprecated(reason: "Accès en lecture seule")
+}
+
+type Mutation {
+    addClient(nom: String!): Client!
+}
+
+type CompteDto {
+    solde: Float!
+    date_creation: String!
+    type: String!
+    client_dto: ClientDto! @deprecated(reason: "Accès en écriture uniquement")
+}
+type ClientDto {
+    nom: String!
+    comptes_dto: [CompteDto!]!
+}
+
+input CompteInput {
+    solde: Float
+    date_creation: String
+    type: String
+}
+type Query{
+      getAllClient:[ClientDto]
+      getAllCompte:[CompteDto]
+}
